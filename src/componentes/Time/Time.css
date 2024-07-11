@@ -5,6 +5,11 @@
     position: relative;
 }
 
+.times h1 {
+    font-size: 35px;
+    text-align: center;
+}
+
 .time h3 {
     font-size: 32px;
     font-family: 'Prata';

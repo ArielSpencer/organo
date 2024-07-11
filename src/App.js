@@ -240,7 +240,7 @@ function App() {
       <Banner />
       <Formulario cadastrarTime={cadastrarTime} times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} />
       <section className="times">
-        <h1>Minha organização</h1>
+        {colaboradores.length > 0 && <h1>Organização</h1>}
         {times.map((time, indice) => <Time mudarCor={mudarCorTime} key={indice} time={time} colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} aoDeletar={deletarColaborador} />)}
       </section>
       <Rodape />
