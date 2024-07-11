@@ -3,6 +3,7 @@ import Botao from '../Botao'
 import Campo from '../Campo'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
 
@@ -11,7 +12,8 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
     const [nomeTime, setNomeTime] = useState('')
-    const [corTime, setCorTime] = useState('')
+    const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
+    const [corTime, setCorTime] = useState(`#${genRanHex(6)}`)    
 
     const aoSubmeter = (evento) => {
         evento.preventDefault()
@@ -19,7 +21,8 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
             nome,
             cargo,
             imagem,
-            time
+            time,
+            id: uuidv4(),
         })
 
         setNome('')
@@ -38,24 +41,24 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                     label='Nome'
                     placeholder='Digite seu nome'
                     valor={nome}
-                    aoAlterado={valor => setNome(valor)}/>
+                    aoAlterado={valor => setNome(valor)} />
                 <Campo
                     obrigatorio={true}
-                    label='Cargo' 
+                    label='Cargo'
                     placeholder='Digite seu cargo'
                     valor={cargo}
-                    aoAlterado={valor => setCargo(valor)}/>
-                <Campo 
-                    label='Imagem' 
+                    aoAlterado={valor => setCargo(valor)} />
+                <Campo
+                    label='Imagem'
                     placeholder='Informe o endereço da imagem'
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)}/>
-                <ListaSuspensa 
+                    aoAlterado={valor => setImagem(valor)} />
+                <ListaSuspensa
                     obrigatorio={true}
                     label='Times'
-                    items={times} 
+                    items={times}
                     valor={time}
-                    aoAlterado={valor => setTime(valor)}/>
+                    aoAlterado={valor => setTime(valor)} />
                 <Botao texto='Criar card' />
             </form>
             {/* Novo Time */}
@@ -63,7 +66,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                 evento.preventDefault()
                 cadastrarTime({ nome: nomeTime, cor: corTime })
                 setNomeTime('')
-                setCorTime('')
+                setCorTime(`#${genRanHex(6)}`)
             }}>
                 <h2>Preencha os dados para criar um novo time.</h2>
                 <Campo
@@ -71,14 +74,13 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                     label='Nome'
                     placeholder='Digite o nome do time'
                     valor={nomeTime}
-                    aoAlterado={valor => setNomeTime(valor)}/>
+                    aoAlterado={valor => setNomeTime(valor)} />
                 <Campo
                     obrigatorio
                     type='color'
-                    label='Cor' 
-                    placeholder='Digite a cor do time'
+                    label='Cor'
                     valor={corTime}
-                    aoAlterado={valor => setCorTime(valor)}/>
+                    aoAlterado={valor => setCorTime(valor)} />
                 <Botao texto='Criar novo time' />
             </form>
         </section>
