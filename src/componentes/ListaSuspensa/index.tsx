@@ -6,6 +6,7 @@ interface ListaSuspensaProps {
     obrigatorio: boolean
     valor: string
     items: string[]
+    typeCss: 'text' | 'color';
 }
 
 const ListaSuspensa = ({ label, items, valor, aoAlterado, obrigatorio = false }: ListaSuspensaProps) => {

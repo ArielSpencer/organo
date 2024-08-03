@@ -5,32 +5,40 @@ import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css';
 import { v4 as uuidv4 } from 'uuid';
 import { GerarHex } from '../ManipularCor';
+import { IColaborador } from '../../compartilhado/interfaces/IColaborador';
 
-const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
+interface FormularioProps {
+    times: string[];
+    aoCadastrar: (colaborador: IColaborador) => void;
+    cadastrarTime: (time: { nome: string; cor: string }) => void;
+}
 
-    const [nome, setNome] = useState('')
-    const [cargo, setCargo] = useState('')
-    const [imagem, setImagem] = useState('')
-    const [time, setTime] = useState('')
-    const [nomeTime, setNomeTime] = useState('')
-    const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
-    const [corTime, setCorTime] = useState(GerarHex)
+const Formulario = ({ times, aoCadastrar, cadastrarTime }: FormularioProps) => {
+    const [nome, setNome] = useState('');
+    const [cargo, setCargo] = useState('');
+    const [imagem, setImagem] = useState('');
+    const [time, setTime] = useState('');
+    const [nomeTime, setNomeTime] = useState('');
+    const [corTime, setCorTime] = useState(GerarHex);
 
-    const aoSubmeter = (evento) => {
-        evento.preventDefault()
+    const genRanHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+
+    const aoSubmeter = (evento: React.FormEvent<HTMLFormElement>) => {
+        evento.preventDefault();
         aoCadastrar({
             nome,
             cargo,
             imagem,
             time,
             id: uuidv4(),
-        })
+            favorito: false,
+        });
 
-        setNome('')
-        setCargo('')
-        setImagem('')
-        setTime('')
-    }
+        setNome('');
+        setCargo('');
+        setImagem('');
+        setTime('');
+    };
 
     return (
         <section className="formulario-container">
@@ -68,10 +76,10 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
             </form>
             {/* Novo Time */}
             <form className="formulario" onSubmit={(evento) => {
-                evento.preventDefault()
-                cadastrarTime({ nome: nomeTime, cor: corTime })
-                setNomeTime('')
-                setCorTime(`#${genRanHex(6)}`)
+                evento.preventDefault();
+                cadastrarTime({ nome: nomeTime, cor: corTime });
+                setNomeTime('');
+                setCorTime(`#${genRanHex(6)}`);
             }}>
                 <h2>Preencha os dados para criar um novo time.</h2>
                 <Campo
@@ -90,7 +98,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                 <Botao>Criar novo time</Botao>
             </form>
         </section>
-    )
+    );
 }
 
 export default Formulario;

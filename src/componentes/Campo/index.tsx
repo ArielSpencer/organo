@@ -5,11 +5,11 @@ interface CampoProps {
     placeholder?: string;
     label: string;
     valor: string;
-    obrigatorio?: boolean;
     typeCss: 'text' | 'color';
+    obrigatorio?: boolean;
 }
 
-const Campo = ({ aoAlterado, placeholder, label, valor, obrigatorio, typeCss }: CampoProps) => {
+const Campo = ({ aoAlterado, placeholder, label, valor, typeCss, obrigatorio = false }: CampoProps) => {
 
     const aoDigitado = (evento: React.ChangeEvent<HTMLInputElement>) => {
         aoAlterado(evento.target.value)
