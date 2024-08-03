@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import Botao from '../Botao'
-import Campo from '../Campo'
-import ListaSuspensa from '../ListaSuspensa'
-import './Formulario.css'
+import { useState } from 'react';
+import Botao from '../Botao';
+import Campo from '../Campo';
+import ListaSuspensa from '../ListaSuspensa';
+import './Formulario.css';
 import { v4 as uuidv4 } from 'uuid';
+import { GerarHex } from '../ManipularCor';
 
 const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
 
@@ -13,7 +14,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
     const [time, setTime] = useState('')
     const [nomeTime, setNomeTime] = useState('')
     const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
-    const [corTime, setCorTime] = useState(`#${genRanHex(6)}`)
+    const [corTime, setCorTime] = useState(GerarHex)
 
     const aoSubmeter = (evento) => {
         evento.preventDefault()
@@ -92,4 +93,4 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
     )
 }
 
-export default Formulario
+export default Formulario;
