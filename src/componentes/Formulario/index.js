@@ -37,23 +37,27 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
             <form className="formulario" onSubmit={aoSubmeter}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
                 <Campo
+                    typeCss='text'
                     obrigatorio={true}
                     label='Nome'
                     placeholder='Digite seu nome'
                     valor={nome}
                     aoAlterado={valor => setNome(valor)} />
                 <Campo
+                    typeCss='text'
                     obrigatorio={true}
                     label='Cargo'
                     placeholder='Digite seu cargo'
                     valor={cargo}
                     aoAlterado={valor => setCargo(valor)} />
                 <Campo
+                    typeCss='text'
                     label='Imagem'
                     placeholder='Informe o endereço da imagem'
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)} />
                 <ListaSuspensa
+                    typeCss='text'
                     obrigatorio={true}
                     label='Times'
                     items={times}
@@ -70,6 +74,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
             }}>
                 <h2>Preencha os dados para criar um novo time.</h2>
                 <Campo
+                    typeCss='text'
                     obrigatorio
                     label='Nome'
                     placeholder='Digite o nome do time'
@@ -77,7 +82,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                     aoAlterado={valor => setNomeTime(valor)} />
                 <Campo
                     obrigatorio
-                    type='color'
+                    typeCss='color'
                     label='Cor'
                     valor={corTime}
                     aoAlterado={valor => setCorTime(valor)} />
