@@ -13,7 +13,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
     const [time, setTime] = useState('')
     const [nomeTime, setNomeTime] = useState('')
     const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
-    const [corTime, setCorTime] = useState(`#${genRanHex(6)}`)    
+    const [corTime, setCorTime] = useState(`#${genRanHex(6)}`)
 
     const aoSubmeter = (evento) => {
         evento.preventDefault()
@@ -59,7 +59,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                     items={times}
                     valor={time}
                     aoAlterado={valor => setTime(valor)} />
-                <Botao texto='Criar card' />
+                <Botao>Criar card</Botao>
             </form>
             {/* Novo Time */}
             <form className="formulario" onSubmit={(evento) => {
@@ -81,7 +81,7 @@ const Formulario = ({ aoCadastrar, times, cadastrarTime }) => {
                     label='Cor'
                     valor={corTime}
                     aoAlterado={valor => setCorTime(valor)} />
-                <Botao texto='Criar novo time' />
+                <Botao>Criar novo time</Botao>
             </form>
         </section>
     )
