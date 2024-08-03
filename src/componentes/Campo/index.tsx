@@ -6,28 +6,26 @@ interface CampoProps {
     label: string;
     valor: string;
     obrigatorio?: boolean;
-    typeCss?: 'text' | 'color';
+    typeCss: 'text' | 'color';
 }
 
-// const Campo = ({ type = 'text', label, placeholder, valor, aoAlterado, obrigatorio = false }) => {
-// const Campo = ({ type = 'text', label, placeholder, valor, aoAlterado, obrigatorio = false }: CampoProps) => {
-const Campo = (props: CampoProps) => {
+const Campo = ({ aoAlterado, placeholder, label, valor, obrigatorio, typeCss }: CampoProps) => {
 
     const aoDigitado = (evento: React.ChangeEvent<HTMLInputElement>) => {
-        props.aoAlterado(evento.target.value)
+        aoAlterado(evento.target.value)
     }
 
     return (
-        <div className={`campo-${props.typeCss}`}>
+        <div className={`campo-${typeCss}`}>
             <label>
-                {props.label}
+                {label}
             </label>
             <input
-                type={props.typeCss}
-                value={props.valor}
+                type={typeCss}
+                value={valor}
                 onChange={aoDigitado}
-                required={props.obrigatorio}
-                placeholder={props.placeholder} />
+                required={obrigatorio}
+                placeholder={placeholder} />
         </div>)
 }
 
