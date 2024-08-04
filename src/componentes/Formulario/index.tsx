@@ -13,7 +13,7 @@ interface FormularioProps {
     cadastrarTime: (time: { nome: string; cor: string }) => void;
 }
 
-const Formulario = ({ times, aoCadastrar, cadastrarTime }: FormularioProps) => {
+const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');

@@ -1,9 +1,15 @@
 import { useState } from "react";
-import Banner from "./componentes/Banner/Banner.tsx";
-import Formulario from "./componentes/Formulario";
-import Rodape from "./componentes/Rodape";
-import Time from "./componentes/Time";
+import Banner from "./componentes/Banner/Banner";
+import Formulario from "./componentes/Formulario/";
+import Rodape from "./componentes/Rodape/";
+import Time from "./componentes/Time/";
 import { v4 as uuidv4 } from 'uuid';
+import { IColaborador } from "./compartilhado/interfaces/IColaborador";
+
+interface NovoTime {
+  nome: string;
+  cor: string;
+}
 
 function App() {
 
@@ -240,13 +246,13 @@ function App() {
     },
   ]
 
-  const [colaboradores, setColaboradores] = useState(inicial)
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>(inicial)
 
-  function deletarColaborador(id) {
+  function deletarColaborador(id: string) {
     setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
   }
 
-  function mudarCorTime(cor, id) {
+  function mudarCorTime(cor: string, id: string) {
     setTimes(times.map(time => {
       if (time.id === id) {
         time.cor = cor;
@@ -255,11 +261,11 @@ function App() {
     }));
   }
 
-  function cadastrarTime(novoTime) {
+  function cadastrarTime(novoTime: NovoTime) {
     setTimes([...times, { ...novoTime, id: uuidv4() }])
   }
 
-  function resolverFavorito(id) {
+  function resolverFavorito(id: string) {
     setColaboradores(colaboradores.map(colaborador => {
       if (colaborador.id === id) colaborador.favorito = !colaborador.favorito;
       return colaborador;
@@ -269,7 +275,11 @@ function App() {
   return (
     <div>
       <Banner enderecoImagem="/imagens/banner.png" textoAlternativo="Banner principal da página do Organo" />
-      <Formulario cadastrarTime={cadastrarTime} times={times.map(time => time.nome)} aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} />
+      <Formulario
+        cadastrarTime={cadastrarTime}
+        times={times.map(time => time.nome)}
+        aoCadastrar={(colaborador: IColaborador) => setColaboradores([...colaboradores, colaborador])}
+      />
       <section className="times">
         {colaboradores.length > 0 && <h1>Organização</h1>}
         {times.map((time, indice) => <Time mudarCor={mudarCorTime} key={indice} time={time} colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)} aoDeletar={deletarColaborador} aoFavoritar={resolverFavorito} />)}
