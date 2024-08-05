@@ -1,17 +1,20 @@
 .campo-text,
-.campo-color {
+.campo-color,
+.campo-date {
     margin: 24px 0;
 }
 
 .campo-text label,
-.campo-color label {
+.campo-color label,
+.campo-date label {
     display: block;
     margin-bottom: 8px;
     font-size: 24px;
 }
 
 .campo-text input,
-.campo-color input {
+.campo-color input,
+.campo-date input {
     background-color: #FFF;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
     width: 100%;
@@ -19,9 +22,14 @@
     font-size: 24px;
     padding: 24px;
     box-sizing: border-box;
+    color: #757575;
+}
+
+.campo-text input:focus {
+    color: #000000;
 }
 
 .campo-color input {
-    padding: 5px 24px;
-    height: 40px;
+    padding: 10px 24px;
+    height: 75px;
 }

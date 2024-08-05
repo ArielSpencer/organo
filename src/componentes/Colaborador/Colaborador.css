@@ -1,12 +1,14 @@
 .colaborador {
     position: relative;
     width: 280px;
+    margin-bottom: 5%;
 }
 
 .colaborador .cabecalho {
-    background-color:  #F0F0F0;
+    background-color: #F0F0F0;
     border-radius: 10px 10px 0px 0px;
 }
+
 .colaborador img {
     width: 100px;
     border-radius: 50%;
@@ -33,8 +35,16 @@
 .colaborador .rodape h5 {
     font-size: 18px;
     line-height: 22px;
+    height: 10px;
     color: #212121;
     padding: 0 16px;
+}
+
+.colaborador .rodape h6 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+    padding-top: 22px;
 }
 
 .deletar {

@@ -20,6 +20,7 @@ const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
     const [time, setTime] = useState('');
     const [nomeTime, setNomeTime] = useState('');
     const [corTime, setCorTime] = useState(GerarHex);
+    const [data, setData] = useState('');
 
     const genRanHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 
@@ -32,6 +33,7 @@ const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
             time,
             id: uuidv4(),
             favorito: false,
+            data,
         });
 
         setNome('');
@@ -46,29 +48,40 @@ const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
             <form className="formulario" onSubmit={aoSubmeter}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
                 <Campo
-                    typeCss='text'
+                    tipo='text'
                     obrigatorio={true}
                     label='Nome'
                     placeholder='Digite seu nome'
                     valor={nome}
-                    aoAlterado={valor => setNome(valor)} />
+                    aoAlterado={valor => setNome(valor)}
+                />
                 <Campo
-                    typeCss='text'
+                    tipo='text'
                     obrigatorio={true}
                     label='Cargo'
                     placeholder='Digite seu cargo'
                     valor={cargo}
-                    aoAlterado={valor => setCargo(valor)} />
+                    aoAlterado={valor => setCargo(valor)}
+                />
                 <Campo
-                    typeCss='text'
+                    tipo='text'
                     label='Imagem'
                     placeholder='Informe o endereço da imagem'
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)} />
-                <ListaSuspensa
-                    typeCss='text'
+                    aoAlterado={valor => setImagem(valor)}
+                />
+                <Campo
+                    tipo='date'
                     obrigatorio={true}
-                    label='Times'
+                    label='Data de entrada no time'
+                    placeholder=''
+                    valor={data}
+                    aoAlterado={valor => setData(valor)}
+                />
+                <ListaSuspensa
+                    tipo='text'
+                    obrigatorio={true}
+                    label='Time'
                     items={times}
                     valor={time}
                     aoAlterado={valor => setTime(valor)} />
@@ -83,7 +96,7 @@ const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
             }}>
                 <h2>Preencha os dados para criar um novo time.</h2>
                 <Campo
-                    typeCss='text'
+                    tipo='text'
                     obrigatorio
                     label='Nome'
                     placeholder='Digite o nome do time'
@@ -91,8 +104,8 @@ const Formulario = ({ cadastrarTime, times, aoCadastrar }: FormularioProps) => {
                     aoAlterado={valor => setNomeTime(valor)} />
                 <Campo
                     obrigatorio
-                    typeCss='color'
-                    label='Cor'
+                    tipo='color'
+                    label='Cor do time'
                     valor={corTime}
                     aoAlterado={valor => setCorTime(valor)} />
                 <Botao>Criar novo time</Botao>

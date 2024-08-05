@@ -1,5 +1,11 @@
 .lista-suspensa {
+    position: relative;
+    display: inline-block;
+}
+
+.lista-suspensa {
     margin: 24px 0;
+    width: 100%;
 }
 
 .lista-suspensa label {
@@ -7,13 +13,36 @@
     margin-bottom: 8px;
     font-size: 24px;
 }
+
 .lista-suspensa select {
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
-    border-radius: 0px;
     width: 100%;
     border: none;
     font-size: 24px;
     padding: 24px;
     box-sizing: border-box;
+    color: #757575;
+    /* padding-right: 10px; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.lista-suspensa::after {
+    content: '';
+    position: absolute;
+    /* top: 80%; */
+    right: 30px;
+    top: 60%;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #757575;
+    pointer-events: none;
+}
+
+/* Estilo do contêiner da lista suspensa para ajustar o posicionamento da seta */
+.lista-suspensa {
+    position: relative;
+    display: inline-block;
 }

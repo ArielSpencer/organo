@@ -6,7 +6,7 @@ interface ListaSuspensaProps {
     obrigatorio: boolean
     valor: string
     items: string[]
-    typeCss: 'text' | 'color';
+    tipo?: 'text' | 'color' | 'password' | 'date' | 'number';
 }
 
 const ListaSuspensa = ({ label, items, valor, aoAlterado, obrigatorio = false }: ListaSuspensaProps) => {
@@ -17,7 +17,7 @@ const ListaSuspensa = ({ label, items, valor, aoAlterado, obrigatorio = false }:
             value={valor}
             onChange={evento => aoAlterado(evento.target.value)}
         >
-            <option />
+            <option value="" disabled>Selecione uma opção...</option>
             {items.map(item => <option key={item}>{item}</option>)}
         </select>
     </div>)

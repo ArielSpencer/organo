@@ -8,6 +8,7 @@ interface ColaboradorProps {
     nome: string;
     imagem: string;
     cargo: string;
+    data: string;
     corDeFundo: string;
     favorito: boolean;
     colaborador: IColaborador;
@@ -15,7 +16,7 @@ interface ColaboradorProps {
     aoFavoritar: (id: string) => void;
 }
 
-const Colaborador = ({ id, nome, imagem, cargo, corDeFundo, favorito, colaborador, aoDeletar, aoFavoritar }: ColaboradorProps) => {
+const Colaborador = ({ id, nome, imagem, cargo, corDeFundo, favorito, colaborador, data, aoDeletar, aoFavoritar }: ColaboradorProps) => {
     function favoritar() {
         aoFavoritar(id)
     }
@@ -30,6 +31,7 @@ const Colaborador = ({ id, nome, imagem, cargo, corDeFundo, favorito, colaborado
         <div className="rodape">
             <h4>{nome}</h4>
             <h5>{cargo}</h5>
+            <h6>{new Date(data).toLocaleDateString()}</h6>
             <div className='favoritar'>
                 {favorito
                     ? <FcLike {...propsFavorito} />

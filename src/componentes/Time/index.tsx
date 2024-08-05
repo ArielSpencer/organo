@@ -34,6 +34,7 @@ const Time = ({ time, colaboradores, mudarCor, aoFavoritar, aoDeletar }: TimePro
                             nome={colaborador.nome}        // Adicionando propriedades
                             imagem={colaborador.imagem}
                             cargo={colaborador.cargo}
+                            data={colaborador.data}
                             corDeFundo={time.cor}
                             favorito={colaborador.favorito}
                             colaborador={colaborador}
