@@ -17,7 +17,7 @@ interface TimeProps {
 
 const Time = ({ time, colaboradores, mudarCor, aoFavoritar, aoDeletar }: TimeProps) => {
     return (
-        colaboradores.length > 0 && (
+        (colaboradores.length > 0) ?
             <section className='time' style={{ backgroundColor: ConverterHexParaRGBA(time.cor) }}>
                 <input
                     onChange={evento => mudarCor(evento.target.value, time.id)}
@@ -44,8 +44,8 @@ const Time = ({ time, colaboradores, mudarCor, aoFavoritar, aoDeletar }: TimePro
                     )}
                 </div>
             </section>
-        )
-    );
+            : <></>
+    )
 }
 
 export default Time;
