@@ -30,13 +30,16 @@ const Colaborador = ({ id, nome, imagem, cargo, corDeFundo, favorito, colaborado
         </div>
         <div className="rodape">
             <h4>{nome}</h4>
-            <h5>{cargo}</h5>
-            <h6>{new Date(data).toLocaleDateString()}</h6>
             <div className='favoritar'>
                 {favorito
                     ? <FcLike {...propsFavorito} />
                     : <FcLikePlaceholder {...propsFavorito} />
                 }
+            </div>
+            <h5>{cargo}</h5>
+            <div className='container__data'>
+                <h6>no time desde:</h6>
+                <p>{new Date(data).toLocaleDateString()}</p>
             </div>
         </div>
     </div>)

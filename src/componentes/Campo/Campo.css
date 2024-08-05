@@ -33,3 +33,15 @@
     padding: 10px 24px;
     height: 75px;
 }
+
+.campo-color input:hover {
+    cursor: pointer;
+}
+
+.campo-date input:hover {
+    cursor: text;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
